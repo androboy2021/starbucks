@@ -1,22 +1,4 @@
 
-const searchEl = document.querySelector('.search');
-const searchInputEl = searchEl.querySelector('input');
-
-searchEl.addEventListener('click', function(){
-  searchInputEl.focus();
-})
-
-// 검색창 요소 내부 실제 input 요소에 포커스가 되면 실행
-searchInputEl.addEventListener('focus',function(){
-  searchEl.classList.add('focused');
-  searchInputEl.setAttribute('placeholder','통합검색')
-})
-
-// 검색창 요소 내부 실제 input 요소에 포커스가 해제(블러)되면 실행
-searchInputEl.addEventListener('blur', function(){
-  searchEl.classList.remove('focused');
-  searchInputEl.setAttribute('placeholder',"");
-})
 
 const badgeEl = document.querySelector('header .badges');
 const toTopEl = document.querySelector('.to-top');
@@ -28,7 +10,7 @@ window.addEventListener('scroll', _.throttle(function(){
   // window.scrollY : 스크롤이 화면의 몇 픽셀지점에 있는지 수치로 알려줌
   // 페이지 스크롤 위치가 500px를 넘으면
   if(window.scrollY>500){
-    //배지 숨기기
+    //뱃지 숨기기
     // gsap.to(요소, 지속시간, 옵션)
     gsap.to(badgeEl, .6, {
       opacity: 0,
@@ -41,7 +23,7 @@ window.addEventListener('scroll', _.throttle(function(){
     })
 
   }else{
-    //배지 보이기  
+    //뱃지 보이기  
     gsap.to(badgeEl, .6, {
       opacity: 1,
       display : 'block'
@@ -147,7 +129,3 @@ spyEls.forEach(function(spyEl){
   .addTo(new ScrollMagic.Controller()) 
 
 })
-
-// 올해가 몇 년도인지 계산
-const thisYear = document.querySelector('.this-year')
-thisYear.textContent = new Date().getFullYear()
